@@ -16,18 +16,19 @@ gs -o MOOCzh-mirrored-S1.pdf \
 
 ### PDF to jpg 
 ```
-mkdir -p ./img ; convert MOOCzh-S1.pdf -density 400  -quality 100 -resize 2000x1500 ./img/MOOCzh-S1-%d.jpg```
+mkdir -p ./img ; convert MOOCzh-S1.pdf -density 400  -quality 100 -resize 2000x1500 ./img/MOOCzh-S1-%d.jpg
+```
 or
-```mogrify -path ./img2/ -format jpg -alpha off -density 400 -quality 100 -resize 2000x1500 -background white MOOCzh-S*.pdf```
+```
+mogrify -path ./img2/ -format jpg -alpha off -density 400 -quality 100 -resize 2000x1500 -background white MOOCzh-S*.pdf
+```
 
 ### Desktop recording
 ```
 ffmpeg -f x11grab -r 25 -s 1280x720 -i :0.0 ~/tmp/out.mp4 # screen only
 ffmpeg -f oss -i /dev/audio -f x11grab -s 1280x720 -r 25 -ab 11 -i :0.0 /tmp/out.mp4  # with audio
 ```
-
 or 
-
 ```
 Xaxis=$(xrandr -q | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
 Yaxis=$(xrandr -q | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
